@@ -1,7 +1,6 @@
-package com.kailai.concurrency.sync;
+package com.kailai.concurrency.example.sync;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

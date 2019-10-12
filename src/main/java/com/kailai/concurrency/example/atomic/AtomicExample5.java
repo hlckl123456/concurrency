@@ -1,12 +1,10 @@
-package com.kailai.concurrency.atomic;
+package com.kailai.concurrency.example.atomic;
 
 import com.kailai.concurrency.annoations.ThreadSafe;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicStampedReference;
 
 @Slf4j
 @ThreadSafe

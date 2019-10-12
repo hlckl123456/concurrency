@@ -1,13 +1,9 @@
-package com.kailai.concurrency.atomic;
+package com.kailai.concurrency.example.atomic;
 
 import com.kailai.concurrency.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.LongAdder;
 
 import static java.util.concurrent.Executors.newCachedThreadPool;
 

@@ -1,4 +1,4 @@
-package com.kailai.concurrency.count;
+package com.kailai.concurrency.example.count;
 
 import com.kailai.concurrency.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
@@ -11,14 +11,15 @@ import static java.util.concurrent.Executors.newCachedThreadPool;
 
 @Slf4j
 @NotThreadSafe
-public class CountExample1 {
+public class CountExample4 {
     // 请求总数
     public static int clientTotal = 5000;
 
     // 同时并发执行的线程数
     public static int threadTotal = 200;
 
-    public static int count = 0;
+    // 用volatile的两个要素：第一当前的写操作，不依赖于当前值
+    public static volatile int count = 0;
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = newCachedThreadPool();
@@ -45,6 +46,10 @@ public class CountExample1 {
     }
 
     private static void add() {
+
+//       1、count
+//       2、+1
+//       3、count
         count++;
     }
 }
