@@ -1,36 +1,38 @@
-package com.kailai.concurrency.example;
+package com.kailai.concurrency.example.commonUnsafe;
 
 import com.kailai.concurrency.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.swing.plaf.SeparatorUI;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
-import static java.util.concurrent.Executors.*;
-
-@Slf4j
 @NotThreadSafe
-public class ConcurrencyTest {
-    // 请求总数
+@Slf4j
+public class HashSetExample {
+
     public static int clientTotal = 5000;
 
     // 同时并发执行的线程数
     public static int threadTotal = 200;
 
-    public static int count = 0;
+    private static Set<Integer> set = new HashSet<>();
 
     public static void main(String[] args) throws InterruptedException {
-        ExecutorService executorService = newCachedThreadPool();
+        ExecutorService executorService = Executors.newCachedThreadPool();
         final Semaphore semaphore = new Semaphore(threadTotal);
         final CountDownLatch countDownLatch = new CountDownLatch(clientTotal);
         for (int i = 0; i < clientTotal; i++) {
+            final int count = i;
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    add();
+                    update(count);
                     semaphore.release();
                 } catch (InterruptedException e) {
                     log.error("exception", e);
@@ -42,11 +44,11 @@ public class ConcurrencyTest {
         // 保证之前的countDown减为0
         countDownLatch.await();
         executorService.shutdown();
-        log.info("count:{}",count);
+        log.info("count:{}",set.size());
 
     }
 
-    private static void add() {
-        count++;
+    private static void update(int i) {
+        set.add(i);
     }
 }

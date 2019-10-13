@@ -1,4 +1,4 @@
-package com.kailai.concurrency.example;
+package com.kailai.concurrency;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
