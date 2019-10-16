@@ -118,6 +118,10 @@ public class ProducerAndConsumerExample2 {
         p2.start();
         c1.start();
         c2.start();
+
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("ccasdsadsa");
+        stringBuffer.toString();
     }
 }
 

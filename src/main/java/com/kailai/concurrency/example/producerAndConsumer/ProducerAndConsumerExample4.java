@@ -74,7 +74,6 @@ public class ProducerAndConsumerExample4 {
         p2.start();
         c1.start();
         c2.start();
-
     }
 
 }
